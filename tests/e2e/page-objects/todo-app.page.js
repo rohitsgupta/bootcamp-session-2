@@ -19,12 +19,32 @@ class TodoAppPage {
     await this.createTaskButton.click();
   }
 
+  async createTaskWithoutTitle() {
+    await this.createTaskButton.click();
+  }
+
+  async reload() {
+    await this.page.reload();
+    await this.page.getByRole('heading', { name: 'Task Planner' }).waitFor();
+  }
+
   taskTitle(title) {
     return this.page.getByText(title, { exact: true });
   }
 
+  successMessage(text) {
+    return this.page.getByText(text, { exact: true });
+  }
+
+  validationMessage(text) {
+    return this.page.getByText(text, { exact: true });
+  }
+
   completionToggle(title) {
-    return this.page.getByRole('checkbox', { name: `Complete ${title}` });
+    return this.page
+      .locator('.task-card')
+      .filter({ has: this.page.getByRole('heading', { name: title, exact: true }) })
+      .getByRole('checkbox');
   }
 
   completedFilterButton() {

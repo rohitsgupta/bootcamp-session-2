@@ -146,6 +146,8 @@ const isOverdue = (task) => {
   return new Date(task.dueDate) < new Date();
 };
 
+const isValidDateValue = (value) => !Number.isNaN(Date.parse(value));
+
 const buildTaskPayload = (formValues) => ({
   title: formValues.title.trim(),
   description: formValues.description.trim(),
@@ -217,6 +219,11 @@ function App() {
       return;
     }
 
+    if (taskForm.dueDate && !isValidDateValue(taskForm.dueDate)) {
+      setFormError('Task due date must be a valid date.');
+      return;
+    }
+
     try {
       await createTaskRequest(buildTaskPayload(taskForm));
       await refreshTasks();
@@ -253,6 +260,11 @@ function App() {
 
     if (!editForm.title.trim()) {
       setEditError('Task title is required.');
+      return;
+    }
+
+    if (editForm.dueDate && !isValidDateValue(editForm.dueDate)) {
+      setEditError('Task due date must be a valid date.');
       return;
     }
 
