@@ -1,94 +1,62 @@
-.App {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+.app-shell {
+  min-height: 100vh;
+  padding: 40px 0 56px;
+  background:
+    radial-gradient(circle at top left, rgba(42, 127, 98, 0.18), transparent 30%),
+    linear-gradient(180deg, #eef4fb 0%, #f7f9fc 45%, #f3f7f4 100%);
 }
 
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-  border-radius: 8px;
-  margin-bottom: 20px;
+.app-container {
+  position: relative;
 }
 
-.App-header h1 {
-  margin: 0;
-  font-size: 1.8rem;
+.hero-panel {
+  padding: 32px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(31, 78, 121, 0.98), rgba(42, 127, 98, 0.92));
+  color: #ffffff;
+  box-shadow: 0 18px 40px rgba(31, 78, 121, 0.22);
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.hero-panel .MuiTypography-colorTextSecondary {
+  color: rgba(255, 255, 255, 0.82);
 }
 
-section {
-  background-color: #f5f5f5;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.task-panel {
+  border-radius: 20px;
+  border: 1px solid rgba(31, 78, 121, 0.08);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
 }
 
-.add-item-section form {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
+.task-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+.task-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 }
 
-button {
-  padding: 8px 16px;
-  background-color: #61dafb;
-  color: #282c34;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
+.task-card-completed {
+  background-color: rgba(31, 78, 121, 0.03);
 }
 
-button:hover {
-  background-color: #21a1c9;
+.task-title {
+  color: #1f2933;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.task-title-completed {
+  color: #52606d;
+  text-decoration: line-through;
 }
 
-li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+@media (max-width: 600px) {
+  .app-shell {
+    padding: 24px 0 40px;
+  }
 
-li:last-child {
-  border-bottom: none;
-}
-
-.delete-btn {
-  background-color: #f44336;
-  color: white;
-  padding: 6px 12px;
-  font-size: 0.8rem;
-  margin-left: 10px;
-}
-
-.delete-btn:hover {
-  background-color: #d32f2f;
-}
-
-.error {
-  color: #d32f2f;
-  font-weight: bold;
+  .hero-panel {
+    padding: 24px;
+    border-radius: 20px;
+  }
 }
